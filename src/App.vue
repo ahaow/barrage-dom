@@ -1,19 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <barrage-comp ref="barrageRef"></barrage-comp>
+    <div style="margin-top: 10px;">
+      <button @click="handleSendBarrage">发送弹幕</button>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import BarrageComp from "./barrage/index";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    BarrageComp,
+  },
+  methods: {
+    handleSendBarrage() {
+      this.barrageRef.handleSendBarrage();
+    },
+  },
+  mounted() {
+    this.barrageRef = this.$refs.barrageRef;
   }
-}
+};
 </script>
 
 <style>
